@@ -22,9 +22,9 @@ This repository contains the german adaption from
 
 * Experiment configurations are found in `experiments.conf`
 * Choose an experiment that you would like to run, e.g. `best`
-* Training: `python train.py <experiment>`
+* Training: `python3 train.py <experiment>`
 * Results are stored in the `logs` directory and can be viewed via TensorBoard.
-* Evaluation: `python evaluate.py <experiment>`
+* Evaluation: `python3 evaluate.py <experiment>`
 
 ## Other Quirks
 
