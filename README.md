@@ -14,9 +14,9 @@ This repository contains the german adaption from
   * Create a 'logs' folder in the root of the repository and extract the model with the folder 'final' in it.
 * Download GloVe embeddings and build custom kernels by running `setup_all.sh`.
   * https://drive.google.com/file/d/1nN_qc3qHtPecxek0LsYf544ipJpfXEfj/view?usp=sharing
-* To train your own models, elmo embeddings need to be trained and converted to the right format.
+* To train your own models, elmo embeddings need to be created and converted to the right format.
   * This assumes access to TüBa-D/Z dataset. 
-  * https://github.com/ChristianHesels/bilm-tf
+  * Use https://github.com/ChristianHesels/bilm-tf-e2e-german to create embeddings
 
 ## Training Instructions
 
