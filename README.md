@@ -1,7 +1,7 @@
-# Higher-order Coreference Resolution with Coarse-to-fine Inference
+# Higher-order Coreference Resolution with Coarse-to-fine Inference for the german language
 
 ## Introduction
-This repository contains the code for replicating results from
+This repository contains the german adaption from
 
 * [Higher-order Coreference Resolution with Coarse-to-fine Inference](https://arxiv.org/abs/1804.05392)
 * [Kenton Lee](http://kentonl.com/), [Luheng He](https://homes.cs.washington.edu/~luheng), and [Luke Zettlemoyer](https://www.cs.washington.edu/people/faculty/lsz)
@@ -9,13 +9,14 @@ This repository contains the code for replicating results from
 
 ## Getting Started
 
-* Install python (either 2 or 3) requirements: `pip install -r requirements.txt`
-* Download pretrained models at https://drive.google.com/file/d/1fkifqZzdzsOEo0DXMzCFjiNXqsKG_cHi
-  * Move the downloaded file to the root of the repo and extract: `tar -xzvf e2e-coref.tgz`
+* Install python3 requirements: `pip3 install -r requirements.txt`
+* Download pretrained model at https://drive.google.com/file/d/1L-kKxzlC0pPr_tJzRyi9xoTOKSPQXfNb/view?usp=sharing
+  * Create a 'logs' folder in the root of the repository and extract the model with the folder 'final' in it.
 * Download GloVe embeddings and build custom kernels by running `setup_all.sh`.
-  * There are 3 platform-dependent ways to build custom TensorFlow kernels. Please comment/uncomment the appropriate lines in the script.
-* To train your own models, run `setup_training.sh`
-  * This assumes access to OntoNotes 5.0. Please edit the `ontonotes_path` variable.
+  * https://drive.google.com/file/d/1nN_qc3qHtPecxek0LsYf544ipJpfXEfj/view?usp=sharing
+* To train your own models, elmo embeddings need to be trained and converted to the right format.
+  * This assumes access to TüBa-D/Z dataset. 
+  * https://github.com/ChristianHesels/bilm-tf
 
 ## Training Instructions
 
@@ -24,27 +25,6 @@ This repository contains the code for replicating results from
 * Training: `python train.py <experiment>`
 * Results are stored in the `logs` directory and can be viewed via TensorBoard.
 * Evaluation: `python evaluate.py <experiment>`
-
-## Demo Instructions
-
-* Command-line demo: `python demo.py final`
-* To run the demo with other experiments, replace `final` with your configuration name.
-
-## Batched Prediction Instructions
-
-* Create a file where each line is in the following json format (make sure to strip the newlines so each line is well-formed json):
-```
-{
-  "clusters": [],
-  "doc_key": "nw",
-  "sentences": [["This", "is", "the", "first", "sentence", "."], ["This", "is", "the", "second", "."]],
-  "speakers": [["spk1", "spk1", "spk1", "spk1", "spk1", "spk1"], ["spk2", "spk2", "spk2", "spk2", "spk2"]]
-}
-```
-  * `clusters` should be left empty and is only used for evaluation purposes.
-  * `doc_key` indicates the genre, which can be one of the following: `"bc", "bn", "mz", "nw", "pt", "tc", "wb"`
-  * `speakers` indicates the speaker of each word. These can be all empty strings if there is only one known speaker.
-* Run `python predict.py <experiment> <input_file> <output_file>`, which outputs the input jsonlines with predicted clusters.
 
 ## Other Quirks
 
